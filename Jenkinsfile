@@ -17,5 +17,11 @@ pipeline {
                 bat "mvn package"                
             }
         }       
+stage('SonarQube Scan') {
+            steps {
+                withSonarQubeEnv('MySonarQube') {
+                    bat "mvn sonar:sonar"
+                }				
+            }
     }
 }
